@@ -1,5 +1,7 @@
-//import library express.js
+//import module express.js
 const express=require('express');
+
+//import middleware morgan
 var morgan = require('morgan');
 
 //inisialisasi objek express.js
@@ -9,9 +11,10 @@ const port = 3000;//port number
 //set view engine menggunakan ejs
 app.set('view engine', 'ejs');
 
+//Menambahkan middleware untuk logging
 app.use((req, res, next) => {
-    console.log('Time:', Date.now())
-    next()
+    console.log('Time:', Date.now())//logging jumlah detik yang telah berlalu sejak tanggal 1 Januari 1970 hingga saat fungsi ini dipanggil.
+    next()//cari middleware berikutnya
   })
   app.use(express.static('public'))
 // app.use(morgan(':method :url :status :response-time ms :res[content-length] - '))
